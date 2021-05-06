@@ -1,6 +1,6 @@
 const upload = require("../middleware/fileUpload");
 
-const URL = "http://localhost:8888/files/";
+const URL = "https://cdc-file-server.herokuapp.com/files/";
 const fs = require("fs");
 
 const DIR = './public/uploads/';
