@@ -4,16 +4,12 @@ const app = express();
 
 global.__basedir = __dirname;
 
-var corsConfig = {
-  origin: "http://localhost:8888"
-};
-
-app.use(cors(corsConfig));
+app.use(cors());
 
 const evokeRoutes = require("./routes/upload.route");
 
-app.use(express.urlencoded({ 
-  extended: true 
+app.use(express.urlencoded({
+  extended: true
 }));
 
 evokeRoutes(app);

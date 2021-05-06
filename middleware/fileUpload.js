@@ -5,7 +5,11 @@ const DIR = './public/uploads/';
 
 let storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, DIR);
+        if (req.params.company) {
+            cb(null, DIR + req.params.company + '/');
+        } else {
+            cb(null, DIR + 'general/');
+        }
     },
     filename: (req, file, cb) => {
         const fileName = file.originalname.toLowerCase().split(' ').join('-');
@@ -16,10 +20,10 @@ let storage = multer.diskStorage({
 let upload = multer({
     storage: storage,
     limits: {
-        fileSize: 1024 * 1024 * 5
+        fileSize: 1024 * 1024 * 25
     },
     fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+        if (true) {
             cb(null, true);
         } else {
             cb(null, false);
